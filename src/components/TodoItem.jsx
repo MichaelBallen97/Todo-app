@@ -4,7 +4,7 @@ function TodoItem({ task, onHandleComplete }) {
 	};
 
 	return (
-		<section className="todo-item">
+		<section className={task.done ? "todo-item complete" : "tood-item pending"}>
 			<input
 				type="checkbox"
 				name="todo-complete"
