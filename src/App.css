@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #CCC;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(65,65,65,1) 70%);
+  border-radius: 10px;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.todo-header {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.todo-header h1 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.todo-header span {
+  font-size: .8rem;
+  font-weight: 100;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.categories-container h2 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.categories-container .categories-list {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.categories-container .categories-list ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  overflow: auto;
+}
+
+.categories-container .categories-list .add-category-button {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: rgba(0, 0, 0, .5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #FFF;
+}
+
+.category-item {
+  background: rgba(0, 0, 0, .5);
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.todos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todos-container h2 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.todos-container ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #000;
+  border-radius: 10px;
+  font-size: .8rem;
+}
+
+.todo-item input {
+  display: none;
+}
+
+.todo-item .checkbox {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid #FFF;
+  cursor: pointer;
+}
+
+.todo-item.complete span {
+  text-decoration: line-through;
+  font-weight: 100;
+}
+
+.add-todo-button button {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: rgba(0, 0, 0, .5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #FFF;
+}

@@ -1,18 +1,21 @@
+import CheckboxItem from "./CheckboxItem";
+
 function TodoItem({ task, onHandleComplete }) {
 	const handleChangeTodo = () => {
 		onHandleComplete(task);
 	};
 
 	return (
-		<section className={task.done ? "todo-item complete" : "tood-item pending"}>
+		<label className={task.done ? "todo-item complete" : "todo-item pending"}>
 			<input
 				type="checkbox"
 				name="todo-complete"
 				checked={task.done}
 				onChange={handleChangeTodo}
 			/>
+			<CheckboxItem task={task} />
 			<span> {task.todo} </span>
-		</section>
+		</label>
 	);
 }
 

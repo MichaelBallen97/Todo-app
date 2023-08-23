@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 import { TasksContext } from "../context/TaskContext";
 
 function TodoList() {
-	const {tasks, setTasks} = useContext(TasksContext)
+	const { tasks, setTasks } = useContext(TasksContext);
 
 	const handleChangeComplete = (task) => {
 		const newTaks = tasks.map((t) => {
@@ -20,6 +20,7 @@ function TodoList() {
 
 	return (
 		<section className="todos-container">
+			<h2>Tareas:</h2>
 			<ul>
 				{tasks.map((task) => (
 					<li key={task.todo}>

@@ -8,10 +8,12 @@ import TaskProvider from "./context/TaskContext";
 function App() {
 	return (
 		<TaskProvider>
-			<Header />
-			<AddTodo />
-			<CategoriesList />
-			<TodoList />
+			<section className="app-container">
+				<Header />
+				<AddTodo />
+				<CategoriesList />
+				<TodoList />
+			</section>
 		</TaskProvider>
 	);
 }

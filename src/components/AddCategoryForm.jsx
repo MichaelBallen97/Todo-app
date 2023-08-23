@@ -1,13 +1,15 @@
-
-function AddCategoryForm({setShowModal}) {
-
+function AddCategoryForm({ showModal, setShowModal, handleSumbit }) {
 	return (
-    <form>
-      <button onClick={()=> setShowModal(false) }>X</button>
-      <input type="text" name="category-name" placeholder="Trabajo" />
+		showModal && (
+			<form onSubmit={handleSumbit}>
+				<button type="button" onClick={() => setShowModal(false)}>
+					X
+				</button>
+				<input type="text" name="category-name" placeholder="Trabajo" />
 
-      <button type="submit">Crear Categoria</button>
-    </form>
+				<button type="submit">Crear Categoria</button>
+			</form>
+		)
 	);
 }
 
