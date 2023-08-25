@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 import { TasksContext } from "../context/TaskContext";
 
 function TodoList() {
-	const { tasks, setTasks } = useContext(TasksContext);
+	const { tasks, setTasks, initialTask } = useContext(TasksContext);
 
 	const handleChangeComplete = (task) => {
 		const newTaks = tasks.map((t) => {
@@ -15,7 +15,21 @@ function TodoList() {
 			}
 		});
 
+		initialTask.current = initialTask.current.map((t) => {
+			if (t.todo === task.todo) {
+				return { ...t, done: !t.done };
+			} else {
+				return t;
+			}
+		});
+
 		setTasks(newTaks);
+	};
+
+	const deleteTask = (todo) => {
+		const newTasks = tasks.filter((task) => task.todo != todo.todo);
+		initialTask.current = initialTask.current.filter((task) => task.todo != todo.todo);
+		setTasks(newTasks);
 	};
 
 	return (
@@ -24,7 +38,11 @@ function TodoList() {
 			<ul>
 				{tasks.map((task) => (
 					<li key={task.todo}>
-						<TodoItem onHandleComplete={handleChangeComplete} task={task} />
+						<TodoItem
+							onHandleComplete={handleChangeComplete}
+							task={task}
+							deleteTask={deleteTask}
+						/>
 					</li>
 				))}
 			</ul>

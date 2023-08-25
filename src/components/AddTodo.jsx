@@ -3,7 +3,8 @@ import AddTodoForm from "./AddTodoForm";
 import { TasksContext } from "../context/TaskContext";
 
 function AddTodo() {
-	const { categories, tasks, setTasks } = useContext(TasksContext);
+	const { categories, tasks, setTasks, initialTask, selectedCategory } =
+		useContext(TasksContext);
 	const [showModal, setShowModal] = useState(false);
 
 	const handleSubmit = (e) => {
@@ -12,15 +13,25 @@ function AddTodo() {
 		const newTodo = formData.get("todo-name");
 		const todoCategory = formData.get("category");
 
-		setTasks([
-			...tasks,
+		initialTask.current = [
+			...initialTask.current,
 			{ todo: newTodo, categories: ["Todas", todoCategory], done: false },
-		]);
+		];
+
+		if (todoCategory === selectedCategory || selectedCategory === "Todas") {
+			setTasks([
+				...tasks,
+				{ todo: newTodo, categories: ["Todas", todoCategory], done: false },
+			]);
+		}
 	};
 
 	return (
 		<section className="add-todo-button">
-			<button onClick={() => setShowModal(true)}>+</button>
+			<label>
+				<button onClick={() => setShowModal(true)}>+</button>
+				<span> Agregar nueva tarea </span>
+			</label>
 			{showModal && (
 				<AddTodoForm
 					setShowModal={setShowModal}
