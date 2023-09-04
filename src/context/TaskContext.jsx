@@ -1,21 +1,21 @@
 import { createContext, useRef, useState } from "react";
-import { categories, todos } from "../utils/data";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const TasksContext = createContext();
 
+
 function TaskProvider({ children }) {
-	const [tasks, setTasks] = useState(todos);
-	const [categoriesList, setCategoriesList] = useState(categories);
+	const { todos, setTodos, categories, setCategories } = useLocalStorage();
 	const [selectedCategory, setSelectedCategory] = useState("Todas");
-	const firstTasks = useRef(tasks);
+	const firstTasks = useRef(todos);
 
 	return (
 		<TasksContext.Provider
 			value={{
-				tasks,
-				setTasks,
-				categories: categoriesList,
-				setCategories: setCategoriesList,
+				tasks: todos,
+				setTasks: setTodos,
+				categories,
+				setCategories,
 				initialTask: firstTasks,
 				selectedCategory: selectedCategory,
 				setSelectedCategory: setSelectedCategory,

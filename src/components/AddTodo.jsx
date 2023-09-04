@@ -1,31 +1,13 @@
-import { useContext, useState } from "react";
 import AddTodoForm from "./AddTodoForm";
-import { TasksContext } from "../context/TaskContext";
+import useCategories from "../hooks/useCategories";
+import useTodos from "../hooks/useTodos";
+import { useState } from "react";
 
 function AddTodo() {
-	const { categories, tasks, setTasks, initialTask, selectedCategory } =
-		useContext(TasksContext);
 	const [showModal, setShowModal] = useState(false);
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const formData = new FormData(e.target);
-		const newTodo = formData.get("todo-name");
-		const todoCategory = formData.get("category");
-
-		initialTask.current = [
-			...initialTask.current,
-			{ todo: newTodo, categories: ["Todas", todoCategory], done: false },
-		];
-
-		if (todoCategory === selectedCategory || selectedCategory === "Todas") {
-			setTasks([
-				...tasks,
-				{ todo: newTodo, categories: ["Todas", todoCategory], done: false },
-			]);
-		}
-	};
-
+	const { categories } = useCategories();
+	const { handleSubmit } = useTodos();
+	
 	return (
 		<section className="add-todo-button">
 			<label>

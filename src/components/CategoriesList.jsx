@@ -2,36 +2,11 @@ import { useContext, useRef, useState } from "react";
 import CategoryItem from "./CategoryItem";
 import AddCategoryForm from "./AddCategoryForm";
 import { TasksContext } from "../context/TaskContext";
+import useCategories from "../hooks/useCategories";
 
 function CategoriesList() {
-	const { categories, setCategories, setTasks, initialTask, setSelectedCategory } =
-		useContext(TasksContext);
 	const [showModal, setShowModal] = useState(false);
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const formData = new FormData(e.target);
-		const newCategory = formData.get("category-name");
-		setCategories([...categories, newCategory]);
-		e.target.reset();
-	};
-
-	const handleDelete = (category) => {
-		const newCategories = categories.filter((c) => c != category);
-
-		setCategories(newCategories);
-	};
-
-	const handleFilter = (category) => {
-		setSelectedCategory(category);
-		const newTasks = initialTask.current.filter(task => {
-			if(task.categories.includes(category)) {
-				return task
-			}
-		})
-
-		setTasks(newTasks);
-	};
+	const { categories, handleDelete, handleFilter, handleSubmit } = useCategories();
 
 	return (
 		<section className="categories-container">
