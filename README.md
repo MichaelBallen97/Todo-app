@@ -1,7 +1,5 @@
-# React + Vite
+#Todo App in React
 
 Todo app in react using custom hooks and context.
 
-## Pending:
-- Edit todo
-- Styles
+Preview project: https://todoapp-mb.netlify.app/
