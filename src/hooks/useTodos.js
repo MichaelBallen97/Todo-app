@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TasksContext } from "../context/TaskContext";
 
 function useTodos () {
+  const [notification, setNotification] = useState(false)
   const { tasks, setTasks, initialTask, selectedCategory } = useContext(TasksContext);
   
   const handleChangeComplete = (task) => {
@@ -47,13 +48,20 @@ function useTodos () {
         { todo: newTodo, categories: ["Todas", todoCategory], done: false },
       ]);
     }
+
+    setNotification(true);
+
+    setTimeout(() => {
+      setNotification(false);
+    }, 5000);
   };
 
   return {
     tasks,
     handleChangeComplete,
     deleteTask,
-    handleSubmit
+    handleSubmit,
+    notification
   }
 }
 

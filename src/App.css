@@ -7,7 +7,6 @@
 
 body {
   background: #CCC;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,10 +91,21 @@ body {
 }
 
 .category-item {
+  position: relative;
   width: max-content;
-  padding: 15px;
+  padding: 25px;
   background: rgba(0, 0, 0, .5);
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-category {
+  border: none;
+  background: none;
+  color: #FFF;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
@@ -191,6 +201,7 @@ body {
   left: 0;
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(65,65,65,1) 70%);
+  z-index: 2;
 }
 
 .add-todo-button form input,
@@ -253,4 +264,18 @@ body {
   padding: 10px;
   background: #FFF;
   color: #000;
+}
+
+.form-notification {
+  background: #FFF;
+  color: #000;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 15px;
+  z-index: 3;
+}
+
+.hidde-notification {
+  display: none;
 }

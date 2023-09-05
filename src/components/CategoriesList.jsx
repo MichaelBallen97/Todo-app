@@ -1,12 +1,12 @@
-import { useContext, useRef, useState } from "react";
+import { useState } from "react";
 import CategoryItem from "./CategoryItem";
+import Notification from "./Notification";
 import AddCategoryForm from "./AddCategoryForm";
-import { TasksContext } from "../context/TaskContext";
 import useCategories from "../hooks/useCategories";
 
 function CategoriesList() {
 	const [showModal, setShowModal] = useState(false);
-	const { categories, handleDelete, handleFilter, handleSubmit } = useCategories();
+	const { categories, handleDelete, handleFilter, handleSubmit, notification } =useCategories();
 
 	return (
 		<section className="categories-container">
@@ -36,6 +36,10 @@ function CategoriesList() {
 				setShowModal={setShowModal}
 				handleSumbit={handleSubmit}
 			/>
+
+			<Notification show={notification}>
+				Nueva categoria creada
+			</Notification>
 		</section>
 	);
 }

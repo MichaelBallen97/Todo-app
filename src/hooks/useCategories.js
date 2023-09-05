@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TasksContext } from "../context/TaskContext";
 
 function useCategories () {
+  const [notification, setNotification] = useState(false)
   const { categories, setCategories, setTasks, initialTask, setSelectedCategory } =
   useContext(TasksContext);
 
@@ -11,6 +12,12 @@ function useCategories () {
     const newCategory = formData.get("category-name");
     setCategories([...categories, newCategory]);
     e.target.reset();
+
+    setNotification(true);
+
+    setTimeout(() => {
+      setNotification(false);
+    }, 5000);
   };
 
   const handleDelete = (category) => {
@@ -34,7 +41,8 @@ function useCategories () {
     categories,
     handleDelete,
     handleFilter,
-    handleSubmit
+    handleSubmit,
+    notification
   }
 }
 
